@@ -3,14 +3,25 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
+const allPosts = await Astro.glob("../content/tips/*.md")
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
+  <main>()
      <Header title="AstroBuild.tips"/>   
   <Hero/>
     <ul role="list" class="link-card-grid">
-      <Card title="Hello A-stro" time="2024-05-07" tags="javascript" />
+      {
+        allPosts.map((item)=>(
+          <Card 
+          title={item?.frontmatter?.title} 
+          time={item?.frontmatter?.pubDate} 
+          tags={item?.frontmatter?.tags} 
+          image={item?.frontmatter?.image}
+          slug={item?.frontmatter?.slug}
+         /> 
+        ))
+      }
     </ul>-
   </main>
 </Layout>
