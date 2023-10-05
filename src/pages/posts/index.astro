@@ -8,7 +8,6 @@ import { getCollection } from "astro:content";
 const posts = (await getCollection("tips")).sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
-console.log(posts);
 ---
 
 <Layout title="Welcome to Astro.">
@@ -22,8 +21,8 @@ console.log(posts);
 						title={post.data.title}
 						time={post.data.pubDate}
 						tags={post.data.tags}
-						image ={post.data.image}
 						slug={post.slug}
+						image={post.data.image}
 					/>
 				))
 			}
