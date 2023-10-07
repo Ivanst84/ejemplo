@@ -3,11 +3,12 @@ export interface Props {
 	title: string;
 	time: string;
 	tags: string[];
-	image:string;
 	slug: string;
+
+	image:string;
 }
 
-const { title, time, tags, image,slug } = Astro.props;
+const { title, time, tags, slug,image } = Astro.props;
 ---
 
 <article

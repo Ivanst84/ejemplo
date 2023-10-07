@@ -1,9 +1,11 @@
 ---
+import DarkModeSwitch from '../components/DarkModeSwitch.astro';
 interface Props {
 	title: string;
 }
-
+const svg_common_classes = " w-12 h-12 text-gray-800 dark:text-white hover:rotate-12 hover:text-orange-500 dark:hover:text-orange-500 duration-300 hover:scale-110 "
 const { title } = Astro.props;
+
 ---
 
 <!doctype html>
@@ -16,8 +18,38 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
+
+
+
+<div class="relative w-full h-full flex flex-col justify-between font-poiret">
+	<header class="relative mx-0 md:mx-10 xl:mx-0 flex flex-row justify-end items-center">
+		<h1
+		  transition:animate="slide"
+		  class="flex-grow font-bold text-4xl md:mb-0 mb-4 dark:text-white text-gray-800 select-none text-center md:text-left"
+		> Ivan Sosa
+		
+		  <span class="font-thin">Software Developer<span>
+		</h1>
+		<div
+		  class={`
+			fixed md:top-8 right-4 md:right-auto md:bottom-auto bottom-10
+			flex flex-row justify-between items-center gap-x-4
+			py-2 px-4 dark:bg-slate-800/80 bg-slate-100/50 rounded-full
+			shadow-sm hover:shadow-xl mr-1 duration-300 z-50
+			backdrop-blur-sm
+		  `}
+		  id="menu"
+		>
+		<DarkModeSwitch />
+		<div class="w-2 h-10 rounded-full dark:bg-[#1d2022] bg-[#efeae3]"></div>
+		  <div class="relative w-8 h-8">
+		  </div>
+		</div>
+	  </header>
 	<body>
+	
 		<slot />
+
 	</body>
 </html>
 <style is:global>
@@ -34,7 +66,7 @@ const { title } = Astro.props;
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
+		background: whitesmoke;
 		background-size: 224px;
 	}
 	code {
@@ -48,4 +80,14 @@ const { title } = Astro.props;
 			Courier New,
 			monospace;
 	}
+  /* Estilos para el modo oscuro */
+  .dark {
+    background-color: #1d2022; /* Color de fondo oscuro */
+    color: #fff; /* Color de texto en modo oscuro */
+  }
+
+  /* Aplicar fondo oscuro a todo el cuerpo de la página en modo oscuro */
+  .dark body {
+    background-color: #1d2022; /* Color de fondo oscuro */
+  }
 </style>
